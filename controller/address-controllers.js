@@ -1,33 +1,33 @@
-const Address = require('../models/address.model');
+const Address = require('../model/address.model');
 
 module.exports = {
     createAddress: async function(req, res, next) {
         try {
             const { userId } = req.params;
-            
+
             // เช็คว่ามี address ของ useId นี้อยู่ไหม
             const existAddress = await Address.findOne({ userId: userId });
-            
+
             // ยังไม่มี address
             if (!existAddress) {
 
-                const address = { ...req.body, isDefault: true };
+                const address = {...req.body, isDefault: true };
                 const newAddress = new Address();
                 newAddress.addresses.push(address);
                 newAddress.userId = userId;
                 let addres = await newAddress.save();
 
-                return res.status(200).json({ "msg":"เพิ่มที่อยู่ใหม่แล้ว", "addressId":  addres._id});
+                return res.status(200).json({ "msg": "เพิ่มที่อยู่ใหม่แล้ว", "addressId": addres._id });
             }
 
             // มี address อยู่แล้ว
-            const newAddress = { ...req.body, isDefault: false };
+            const newAddress = {...req.body, isDefault: false };
 
             existAddress.addresses.push(newAddress);
             await existAddress.save();
 
-            return res.status(200).json({ "msg":"เพิ่มที่อยู่แล้ว", "addressId":  existAddress._id });
-            
+            return res.status(200).json({ "msg": "เพิ่มที่อยู่แล้ว", "addressId": existAddress._id });
+
         } catch (error) {
             next(error);
         }
@@ -43,7 +43,7 @@ module.exports = {
 
     loadAddress: async function(req, res, next) {
         try {
-            const {userId} = req.params;
+            const { userId } = req.params;
             res.status(200).json(await Address.findOne({ userId }))
         } catch (error) {
             next(error);
@@ -70,7 +70,7 @@ module.exports = {
             address.addresses = result
             await address.save();
 
-            return res.status(200).json({ "msg":"ลบที่อยู่แล้ว" });
+            return res.status(200).json({ "msg": "ลบที่อยู่แล้ว" });
         } catch (error) {
             next(error);
         }
