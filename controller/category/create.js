@@ -1,13 +1,13 @@
-const Categories = require('../../models/category.model');
+const Categories = require('../../model/category.model');
 
 module.exports.create = async function(req, res, next) {
     try {
         const { categoryName, categoryCode } = req.body;
 
-        const isExistCategory = await Categories.find({ categoryName, userId: req.query.userId }); 
+        const isExistCategory = await Categories.find({ categoryName, userId: req.query.userId });
 
         if (isExistCategory.length > 0) {
-            return res.status(200).json({ "msg": `มี Category - ${categoryName} แล้ว`});
+            return res.status(200).json({ "msg": `มี Category - ${categoryName} แล้ว` });
         }
 
         const newCategory = {
@@ -21,7 +21,7 @@ module.exports.create = async function(req, res, next) {
             return res.status(200).json({ "msg": `บันทึก Category - ${categoryName} แล้ว` });
         });
 
-        
+
 
 
 

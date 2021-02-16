@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { create, update, load } = require('../controllers/category-controllers');
+const { create, update, load } = require('../controller/category-controllers');
 const { uploadImageCategory } = require('../middleware/multer');
 const { isAdmin } = require('../middleware/isAdmin');
 const { checkLogin } = require('../middleware/passport')

@@ -30,7 +30,7 @@ app.use('/users', usersRouter);
 app.use('/products', require("./routes/products.routes"));
 app.use('/address', require('./routes/address.routes'));
 app.use('/cart', require('./routes/cart.routes'));
-// app.use('/category', require('./routes/category.routes'));
+app.use('/category', require('./routes/category.routes'));
 // app.use('/brand', require('./routes/brand.routes'));
 // app.use('/orders', require('./routes/orders.routes'));
 
