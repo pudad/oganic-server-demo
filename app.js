@@ -25,13 +25,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/products', require("./routes/products.routes"));
-app.use('/address', require('./routes/address.routes'));
-app.use('/cart', require('./routes/cart.routes'));
-app.use('/category', require('./routes/category.routes'));
-app.use('/brand', require('./routes/brand.routes'));
-app.use('/orders', require('./routes/orders.routes'));
+app.use('/api/', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/products', require("./routes/products.routes"));
+app.use('/api/address', require('./routes/address.routes'));
+app.use('/api/cart', require('./routes/cart.routes'));
+app.use('/api/category', require('./routes/category.routes'));
+app.use('/api/brand', require('./routes/brand.routes'));
+app.use('/api/orders', require('./routes/orders.routes'));
 
 module.exports = app;
