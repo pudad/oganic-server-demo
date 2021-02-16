@@ -1,5 +1,5 @@
 const Cart = require('../../model/cart.model');
-const Products = require('../../controller/product-controllers');
+const Products = require('../../model/products.model');
 
 module.exports.createCartItem = async function(req, res, next) {
     try {
@@ -11,7 +11,7 @@ module.exports.createCartItem = async function(req, res, next) {
         // 1. ดูว่า userId นี้มีตะกร้าหรือยัง
 
         const existCart = await Cart.findOne({ userId });
-        const oldProduct = await Products.findById({ _id: productId });
+        const oldProduct = await Products.findById({ _id: productId })
 
         // 2. ยังไม่มีตะกร้า
 
