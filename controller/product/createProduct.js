@@ -5,7 +5,7 @@ module.exports.createProduct = async function(req, res, next) {
 
         let allImage = [];
         req.files.forEach((images) => {
-            allImage.push(`http://localhost:3000/images/product/${req.query.userId}/${images.filename}`);
+            allImage.push(`https://oganic-server-demo.herokuapp.com/images/product/${req.query.userId}/${images.filename}`);
         });
 
         const products = new Products({
