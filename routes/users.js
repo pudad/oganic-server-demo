@@ -7,12 +7,8 @@ const { checkLogin } = require("../middleware/passport");
 const { isAdmin } = require("../middleware/isAdmin");
 
 /* GET users listing. */
-// router.get("/", loadAllUsers);
-// router.post("/", [checkDataSignUp, uploadImageProfile.single("imageFile")], createUser);
+router.get("/", loadAllUsers);
+router.post("/", [checkDataSignUp, uploadImageProfile.single("imageFile")], createUser);
 
-router
-    .route("/")
-    .post([checkDataSignUp, uploadImageProfile.single("imageFile")], users.createUser)
-    .get([checkLogin, isAdmin], users.loadAllUsers);
 
 module.exports = router;
