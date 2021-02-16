@@ -14,7 +14,7 @@ module.exports.create = async function(req, res, next) {
             categoryName,
             categoryCode,
             userId: req.query.userId,
-            categoryImagesUrl: `http://localhost:3000/images/category/${req.query.userId}/${req.file.filename}`
+            categoryImagesUrl: `https://oganic-server-demo.herokuapp.com/images/category/${req.query.userId}/${req.file.filename}`
         }
 
         new Categories(newCategory).save(null, () => {
