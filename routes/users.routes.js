@@ -10,9 +10,9 @@ const { isAdmin } = require("../middleware/isAdmin");
 router.get("/", loadAllUsers);
 router.post("/", [checkDataSignUp, uploadImageProfile.single("imageFile")], createUser);
 
-router.get("/:userId", [checkLogin, isAdmin], loadUser)
-router.put("/:userId", [checkDataUpdatePassword, checkLogin, isAdmin], updatePassword);
+// router.get("/:userId", [checkLogin, isAdmin], loadUser)
+// router.put("/:userId", [checkDataUpdatePassword, checkLogin, isAdmin], updatePassword);
 
-router.post("/login", [checkDataSignIn], login);
+// router.post("/login", [checkDataSignIn], login);
 
 module.exports = router;
