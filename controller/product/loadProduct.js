@@ -1,4 +1,4 @@
-const Products = require('../../models/products.model');
+const Products = require('../../model/products.model');
 
 module.exports.loadProduct = async function(req, res, next) {
     try {
@@ -8,7 +8,7 @@ module.exports.loadProduct = async function(req, res, next) {
 
 
         if (!product) {
-            return res.status(401).json({ "msg": "ไม่พบสินค้า"});
+            return res.status(401).json({ "msg": "ไม่พบสินค้า" });
         }
 
 
