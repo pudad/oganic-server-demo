@@ -32,7 +32,7 @@ module.exports.createUser = async function(req, res, next) {
         // 4.ถ้าไม่มี สร้งผู้ใช้งาน
 
         const newUser = {
-            imageUrl: `http://localhost:3000/images/profile/${req.file.filename}`,
+            imageUrl: `https://oganic-server-demo.herokuapp.com/images/profile/${req.file.filename}`,
             email,
             username,
             password: await encode(password)
