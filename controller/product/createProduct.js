@@ -8,8 +8,6 @@ module.exports.createProduct = async function(req, res, next) {
             allImage.push(`http://localhost:3000/images/product/${req.query.userId}/${images.filename}`);
         });
 
-        console.log(req.files)
-
         const products = new Products({
             ...req.body,
             imagesUrl: allImage
