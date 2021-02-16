@@ -1,4 +1,4 @@
-const Users = require('../../models/users.model');
+const Users = require('../../model/users.model');
 const { encode } = require('../../utility/password');
 const { validationResult } = require("express-validator");
 
@@ -14,16 +14,16 @@ module.exports.updatePassword = async function(req, res, next) {
             throw err;
         }
 
-        const {userId} = req.params;
+        const { userId } = req.params;
         const user = await Users.findById(userId);
 
-        if (!user) return res.status(401).json({ "msg":"ไม่พบผู้ใช้งาน" });
+        if (!user) return res.status(401).json({ "msg": "ไม่พบผู้ใช้งาน" });
 
         const { password } = req.body;
         const newPassword = await encode(password);
 
-        const i = await Users.findOneAndUpdate({ _id: userId}, { password: newPassword });
-        return res.status(200).json({ "msg":"เปลี่ยนรหัสผ่านแล้ว" });
+        const i = await Users.findOneAndUpdate({ _id: userId }, { password: newPassword });
+        return res.status(200).json({ "msg": "เปลี่ยนรหัสผ่านแล้ว" });
     } catch (error) {
         next(error);
     }

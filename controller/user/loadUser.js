@@ -1,4 +1,4 @@
-const Users = require('../../models/users.model');
+const Users = require('../../model/users.model');
 
 module.exports.loadUser = async function(req, res, next) {
     try {
@@ -6,7 +6,7 @@ module.exports.loadUser = async function(req, res, next) {
         const { userId } = req.params;
         const user = await Users.findOne({ _id: userId });
         // 2.ถ้าไม่มีแจ้งผิดพลาด
-        if (!user) return res.status(401).json({ "msg":"ไม่พบผู้ใช้" });
+        if (!user) return res.status(401).json({ "msg": "ไม่พบผู้ใช้" });
         // 3.ถ้ามี ส่งคืนข้อมูลผู้ใช้
         const myUser = {
             isAdmin: user.isAdmin,
@@ -15,7 +15,7 @@ module.exports.loadUser = async function(req, res, next) {
         }
         return res.status(200).json(myUser);
 
-        
+
     } catch (error) {
         next(error);
     }
